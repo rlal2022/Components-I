@@ -1,3 +1,4 @@
+import linkData from '../../../../web-guided-project-components-1-solution/src/data/linkData';
 import './Menu.less'
 
 // This is the data we will be using, study it but don't change anything, yet.
@@ -7,7 +8,8 @@ let menuItems = [
   "What's New",
   'Tech Trends',
   'Music',
-  'Log Out'
+  'Log Out',
+  'Contact Us'
 ];
 
 /*
@@ -28,7 +30,39 @@ let menuItems = [
 
   Step 4: Add a click event listener to the menu button. When clicked it should toggle the class 'menu--open' on div.menu (your div with a 'menu' class).
 
-  Step 5: Don't forget to return your div.menu.
+  Step 5  : Don't forget to return your div.menu.
 
   Step 6: Use 'menuMaker' to create a menu using the 'menuItems' array, and append the returned menu to the header.
 */
+
+
+function menuMaker(menuObj) {
+
+  const menuDiv = document.createElement("div");
+  const menuUl = document.createElement("ul");
+
+
+  menuDiv.classList.add("menu");
+  menuDiv.appendChild(menuUl);
+
+menuObj.forEach(element => {
+
+  const menuItem = document.createElement("li")
+  menuItem.textContent = element;
+  menuUl.appendChild(menuItem);
+
+ 
+})
+
+const btn = document.querySelector(".menu-button");
+btn.addEventListener('click', () => {
+  menuDiv.classList.toggle("menu--open");
+
+})
+
+return menuDiv;
+
+
+}
+
+document.querySelector('.header').appendChild(menuMaker(menuItems));
